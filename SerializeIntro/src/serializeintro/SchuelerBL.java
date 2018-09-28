@@ -40,5 +40,11 @@ public class SchuelerBL{
         }
         br.close();
     }
+
+    public ArrayList<Schueler> getSchueler() {
+        return schueler;
+    }
+    
+    
     
 }
