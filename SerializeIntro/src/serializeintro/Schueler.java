@@ -1,10 +1,10 @@
 package serializeintro;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 
-public class Schueler {
+public class Schueler implements Serializable{
     private String name;
     private LocalDate birthday;
 

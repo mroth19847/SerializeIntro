@@ -1,15 +1,14 @@
 package serializeintro;
 
 import java.io.File;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LoadTester {
 
     public static void main(String[] args) {
         SchuelerBL bl = new SchuelerBL();
         try {
-            bl.load(new File("./klasse.csv"));
+            bl.loadSerialize(new File("./klasse.ser"));
+            System.out.println("Name,Geburtstag");
             for (Schueler s : bl.getSchueler()) {
                 System.out.println(s.toString());
             }
