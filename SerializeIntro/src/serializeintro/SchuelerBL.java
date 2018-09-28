@@ -2,6 +2,7 @@ package serializeintro;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -45,10 +46,15 @@ public class SchuelerBL {
     }
 
     public void loadSerialize(File f) throws Exception{
-        FileInputStream fis = new FileInputStream(f);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-        Schueler s = (Schueler) ois.readObject();
-        fis.close();
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(f));
+        try {
+            Object o;
+            while ((o = ois.readObject()) != null) {
+                schueler.add((Schueler) o);
+            }
+        } catch (EOFException eofExc) {
+            //this catch is only to determine end of file
+        }
         ois.close();
     }
 
